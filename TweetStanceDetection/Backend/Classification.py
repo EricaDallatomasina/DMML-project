@@ -80,6 +80,9 @@ def __search_Vaccine_Period(df: pd.DataFrame, vaccine, start_date, end_date):
     __validate(start_date)
     __validate(end_date)
 
+    if start_date < "2021-03-01":
+        raise ValueError("Incorrect data from, should be > 2021-03-01")
+
     if vaccine == "tutti":
         return df[(df['timestamp'] > start_date) & (df['timestamp'] < end_date)]
     else:
